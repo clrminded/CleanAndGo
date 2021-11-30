@@ -1,8 +1,8 @@
 
 class CleanAndGo {
     public static void main(String[] args) {
-        printTitle();
-        scenerio2();
+        topMenu();
+        bottomMenu();
     }
 
     /*
@@ -11,25 +11,6 @@ class CleanAndGo {
      * 2. Customers & Services
      ************************************************************
      */
-
-    public static void scenerio2() {
-        for (int i = 0; i < 60; i++) {
-            System.out.print("*");
-        }
-        System.out.println();
-        for (int i = 0; i < 15; i++) {
-            System.out.print(" ");
-        }
-        System.out.println("Welcome To Clean-And-Go Shop");
-        for (int i = 0; i < 18; i++) {
-            System.out.print(" ");
-        }
-        System.out.println("2. Customers & Services");
-        for (int i = 0; i < 60; i++) {
-            System.out.print("*");
-        }
-        System.out.println();
-    }
 
     /*
      *****************************************************************************
@@ -44,33 +25,52 @@ class CleanAndGo {
      * 5. Quit
      * 
      */
-    public static void printTitle() {
+    public static void topMenu() {
         for (int i = 0; i < 77; i++) {
             System.out.print("*");
         }
         System.out.println();
-        for (int i = 0; i < 34; i++) {
+        for (int i = 0; i < 32; i++) {
             System.out.print(" ");
         }
         for (int i = 0; i < 11; i++) {
             System.out.print("*");
         }
         System.out.println();
-        for (int i = 0; i < 25; i++) {
+    }
+
+    public static void titlePadding(int spaces) { // 25 spaces
+        for (int i = 0; i < spaces; i++) {
             System.out.print(" ");
         }
+    }
+
+    public static void bottomMenu() {
+        for (int i = 0; i < 32; i++) {
+            System.out.print(" ");
+        }
+        for (int i = 0; i < 11; i++) {
+            System.out.print("*");
+        }
+        System.out.println();
+        for (int i = 0; i < 77; i++) {
+            System.out.print("*");
+        }
+        System.out.println();
+    }
+
+    public static void printTitle(String menuTitle) {
+
         System.out.println("Welcome To Clean-And-Go Shop");
-        for (int i = 0; i < 34; i++) {
-            System.out.print(" ");
+
+        if (menuTitle == "main") {
+            System.out.println();
+        } else {
+            for (int i = 0; i < 28; i++) {
+                System.out.print(" ");
+            }
+            System.out.println(menuTitle);
         }
-        for (int i = 0; i < 11; i++) {
-            System.out.print("*");
-        }
-        System.out.println();
-        for (int i = 0; i < 77; i++) {
-            System.out.print("*");
-        }
-        System.out.println();
     }
 
 }

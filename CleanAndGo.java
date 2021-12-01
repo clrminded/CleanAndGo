@@ -4,13 +4,19 @@ import java.io.InputStreamReader;
 import java.sql.Connection;
 //import java.sql.Date;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+//import java.sql.PreparedStatement;
+//import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
+//import java.sql.Statement;
 
 class CleanAndGo {
     public static void main(String[] args) {
+        connectToDB("student", "password");
+
+    }
+
+    public static void connectToDB(String username, String password) {
+        welcomeMenu();
         Connection conn = null;
         try {
             // Step 1: Load the JDBC driver(You have to have the connector Jar file in your
@@ -18,34 +24,34 @@ class CleanAndGo {
             Class.forName("com.mysql.cj.jdbc.Driver");
             // Connect to the database(Change the URL)
             String url = "jdbc:mysql://localhost:3306/CleanNGo?serverTimezone=UTC&useSSL=TRUE";
-            String user;
-            String pass;
-            user = readEntry("userid : ");
-            pass = readEntry("password: ");
-            conn = DriverManager.getConnection(url, user, pass);
+            // String user;
+            // String pass;
+            // user = readEntry("userid : ");
+            // pass = readEntry("password: ");
+            conn = DriverManager.getConnection(url, username, password);
 
             boolean done = false;
             do {
-                welcomeMenu();
                 System.out.print("Type in your option: ");
                 System.out.flush();
                 String ch = readLine();
                 System.out.println();
 
                 switch (ch.charAt(0)) {
-                    case 'a':
-                        findAllEquipment(conn);
+                    case '1':
+                        Equipment equip = new Equipment();
+                        equip.findAllEquipment(conn);
                         break;
-                    case 'b':
+                    case '2':
                         customerServiceMenu();
                         break;
-                    case 'c':
+                    case '3':
                         employeeMenu();
                         break;
-                    case 'd':
+                    case '4':
                         updatesMenu();
                         break;
-                    case 'e':
+                    case '5':
                         quitMenu();
                         done = true;
                         break;
@@ -70,46 +76,6 @@ class CleanAndGo {
                 }
             }
         }
-
-    }
-
-    private static void findAllEquipment(Connection conn) throws SQLException, IOException {
-
-        /*
-         * In this method your SQL Query should return the ssn, Lname, FirstName and
-         * Salary for all employees ordered by the highest salary
-         */
-        equipmentSupplyMenu();
-        // STEP1: CREATE VARIABLE OF TYPE STATEMENT
-
-        Statement stmt = conn.createStatement();
-
-        // STEP 2 DEFINE A STRING THAT IS = TO YOUR query SQL Statement
-
-        String query = "select * from Employee";
-        PreparedStatement p = conn.prepareStatement(query);
-        p.clearParameters();
-
-        // Step 3: Declare a variable with ResultSet type
-
-        ResultSet r = p.executeQuery();
-
-        // Execute your Query and store the return in the declared variable from step 3
-
-        System.out.println("    HIGHEST PAID WORKERS");
-        System.out.println("--------------------------------------------------\n");
-
-        // Write a loop to read all the returned rows from the query execution
-        while (r.next()) {
-            String ssn = r.getString(1);
-            String lname = r.getString(2);
-            String fname = r.getString(3);
-            double salary = r.getDouble(4);
-            System.out.println(ssn + " " + lname + " " + fname + " " + salary);
-        }
-
-        // Close the statement
-        stmt.close();
     }
 
     public static void welcomeMenu() {
@@ -130,15 +96,6 @@ class CleanAndGo {
     }
 
     // Scenerio 1 (Updates)
-
-    public static void equipmentSupplyMenu() {
-        topMenu();
-        titlePadding(25);
-        System.out.println("Welcome To Clean-And-Go Shop");
-        titlePadding(27);
-        System.out.println("1. Equipment & Supplies");
-        bottomMenu();
-    }
 
     // Scenerio 2 (Customers & Services)
     public static void customerServiceMenu() {
@@ -227,7 +184,7 @@ class CleanAndGo {
         }
     }
 
-    private static String readLine() {
+    public static String readLine() {
         InputStreamReader isr = new InputStreamReader(System.in);
 
         BufferedReader br = new BufferedReader(isr, 1);

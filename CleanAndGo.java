@@ -2,7 +2,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.sql.Connection;
-import java.sql.Date;
+//import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,60 +11,57 @@ import java.sql.Statement;
 
 class CleanAndGo {
     public static void main(String[] args) {
-
-        boolean done = false;
-        do {
-            welcomeMenu();
-            System.out.print("Type in your option: ");
-            System.out.flush();
-            String ch = readLine();
-            System.out.println();
-
-            switch (ch.charAt(0)) {
-                case '1':
-                    equipmentSupplyMenu();
-                    break;
-                case '2':
-                    customerServiceMenu();
-                    break;
-                case '3':
-                    employeeMenu();
-                    break;
-                case '4':
-                    updatesMenu();
-                    break;
-                case '5':
-                    quitMenu();
-                    done = true;
-                    break;
-                default:
-                    System.out.println(" Not a valid option ");
-            } // switch
-
-        } while (!done);
-
         Connection conn = null;
         try {
             // Step 1: Load the JDBC driver(You have to have the connector Jar file in your
             // project Class path)
             Class.forName("com.mysql.cj.jdbc.Driver");
             // Connect to the database(Change the URL)
-            String url = "jdbc:mysql://localhost:3306/Company?serverTimezone=UTC&useSSL=TRUE";
+            String url = "jdbc:mysql://localhost:3306/CleanNGo?serverTimezone=UTC&useSSL=TRUE";
             String user;
             String pass;
             user = readEntry("userid : ");
             pass = readEntry("password: ");
             conn = DriverManager.getConnection(url, user, pass);
 
+            boolean done = false;
+            do {
+                welcomeMenu();
+                System.out.print("Type in your option: ");
+                System.out.flush();
+                String ch = readLine();
+                System.out.println();
+
+                switch (ch.charAt(0)) {
+                    case 'a':
+                        findAllEquipment(conn);
+                        break;
+                    case 'b':
+                        customerServiceMenu();
+                        break;
+                    case 'c':
+                        employeeMenu();
+                        break;
+                    case 'd':
+                        updatesMenu();
+                        break;
+                    case 'e':
+                        quitMenu();
+                        done = true;
+                        break;
+                    default:
+                        System.out.println(" Not a valid option ");
+                } // switch
+
+            } while (!done);
+
         } catch (ClassNotFoundException e) {
             System.out.println("Could not load the driver");
         } catch (SQLException ex) {
             System.out.println(ex);
-        }
-        // catch (IOException e) {
-        // e.printStackTrace();
-        // }
-        finally {
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
             if (conn != null) {
                 try {
                     conn.close();
@@ -74,6 +71,45 @@ class CleanAndGo {
             }
         }
 
+    }
+
+    private static void findAllEquipment(Connection conn) throws SQLException, IOException {
+
+        /*
+         * In this method your SQL Query should return the ssn, Lname, FirstName and
+         * Salary for all employees ordered by the highest salary
+         */
+        equipmentSupplyMenu();
+        // STEP1: CREATE VARIABLE OF TYPE STATEMENT
+
+        Statement stmt = conn.createStatement();
+
+        // STEP 2 DEFINE A STRING THAT IS = TO YOUR query SQL Statement
+
+        String query = "select * from Employee";
+        PreparedStatement p = conn.prepareStatement(query);
+        p.clearParameters();
+
+        // Step 3: Declare a variable with ResultSet type
+
+        ResultSet r = p.executeQuery();
+
+        // Execute your Query and store the return in the declared variable from step 3
+
+        System.out.println("    HIGHEST PAID WORKERS");
+        System.out.println("--------------------------------------------------\n");
+
+        // Write a loop to read all the returned rows from the query execution
+        while (r.next()) {
+            String ssn = r.getString(1);
+            String lname = r.getString(2);
+            String fname = r.getString(3);
+            double salary = r.getDouble(4);
+            System.out.println(ssn + " " + lname + " " + fname + " " + salary);
+        }
+
+        // Close the statement
+        stmt.close();
     }
 
     public static void welcomeMenu() {

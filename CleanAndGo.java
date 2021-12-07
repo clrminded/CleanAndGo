@@ -12,17 +12,14 @@ import java.sql.SQLException;
 class CleanAndGo {
     public static void main(String[] args) {
         connectToDB("student", "password");
-
     }
 
     public static void connectToDB(String username, String password) {
-        welcomeMenu();
         Connection conn = null;
         try {
-            // Step 1: Load the JDBC driver(You have to have the connector Jar file in your
-            // project Class path)
+            // Step 1: Load the JDBC driver
             Class.forName("com.mysql.cj.jdbc.Driver");
-            // Connect to the database(Change the URL)
+            // Connect to the database
             String url = "jdbc:mysql://localhost:3306/CleanNGo?serverTimezone=UTC&useSSL=TRUE";
             // String user;
             // String pass;
@@ -32,6 +29,8 @@ class CleanAndGo {
 
             boolean done = false;
             do {
+                // main first screen
+                welcomeMenu();
                 System.out.print("Type in your option: ");
                 System.out.flush();
                 String ch = readLine();
@@ -39,25 +38,126 @@ class CleanAndGo {
 
                 switch (ch.charAt(0)) {
                     case '1':
-                        Equipment equip = new Equipment();
-                        equip.findAllEquipment(conn);
-                        break;
+                        // main menu option 1 equipment & supplie menu
+                        boolean equipmentDone = false;
+                        do {
+                            equipmentSupplyMenu();
+                            System.out.print("Type in your option: ");
+                            System.out.flush();
+                            String equip_ch = readLine();
+                            System.out.println();
+
+                            switch (equip_ch.charAt(0)) {
+                                case '1':
+                                    System.out.println("1. Analyze the progress of the business.");
+                                    break;
+                                case '2':
+                                    System.out.println("2. Equipment");
+                                    break;
+                                case '3':
+                                    System.out.println("3. Employees");
+                                    break;
+                                case '4':
+                                    System.out.println("4. Go back to main menu");
+                                    equipmentDone = true;
+                                    break;
+                                default:
+                                    // repeats if non valid option is chosen
+                                    System.out.println(" Not a valid option ");
+                            }
+                        } while (!equipmentDone);
+
+                        break; // end of main menu option 1
                     case '2':
-                        customerServiceMenu();
-                        break;
+                        // main menu option 2 customer & services menu
+                        boolean customerDone = false;
+                        do {
+                            equipmentSupplyMenu();
+                            System.out.print("Type in your option: ");
+                            System.out.flush();
+                            String customer_ch = readLine();
+                            System.out.println();
+
+                            switch (customer_ch.charAt(0)) {
+                                case '1':
+                                    System.out.println("1. Analyze the progress of the business");
+                                    break;
+                                case '2':
+                                    System.out.println("2. Services");
+                                    break;
+                                case '3':
+                                    System.out.println("3. Customers");
+                                    break;
+                                case '4':
+                                    System.out.println("4. Go back to main menu");
+                                    customerDone = true;
+                                    break;
+                                default:
+                                    // repeats if non valid option is chosen
+                                    System.out.println(" Not a valid option ");
+                            }
+                        } while (!customerDone);
+
+                        break; // end of main menu option 2
                     case '3':
-                        employeeMenu();
-                        break;
+                        // main menu option 3 employee menu
+                        boolean employeeDone = false;
+                        do {
+                            employeeMenu();
+                            System.out.print("Type in your option: ");
+                            System.out.flush();
+                            String employee_ch = readLine();
+                            System.out.println();
+
+                            switch (employee_ch.charAt(0)) {
+                                case '1':
+                                    System.out.println("1. Get Working Schedule");
+                                    break;
+                                case '2':
+                                    System.out.println("2. Go back to main menu");
+                                    employeeDone = true;
+                                    break;
+                                default:
+                                    // repeats if non valid option is chosen
+                                    System.out.println(" Not a valid option ");
+                            }
+                        } while (!employeeDone);
+
+                        break; // end of main menu option 3
                     case '4':
-                        updatesMenu();
+                        // main menu option 4 updates menu
+                        boolean updatesDone = false;
+                        do {
+                            updatesMenu();
+                            System.out.print("Type in your option: ");
+                            System.out.flush();
+                            String updates_ch = readLine();
+                            System.out.println();
+
+                            switch (updates_ch.charAt(0)) {
+                                case '1':
+                                    System.out.println("1. Get Working Schedule");
+                                    break;
+                                case '2':
+                                    System.out.println("2. Go back to main menu");
+                                    updatesDone = true;
+                                    break;
+                                default:
+                                    // repeats if non valid option is chosen
+                                    System.out.println(" Not a valid option ");
+                            }
+                        } while (!updatesDone);
+
                         break;
                     case '5':
+                        // main menu option 5 quit program
                         quitMenu();
                         done = true;
                         break;
                     default:
+                        // repeats if non valid option is chosen
                         System.out.println(" Not a valid option ");
-                } // switch
+                } // end of main menu switch
 
             } while (!done);
 
@@ -65,8 +165,8 @@ class CleanAndGo {
             System.out.println("Could not load the driver");
         } catch (SQLException ex) {
             System.out.println(ex);
-        } catch (IOException e) {
-            e.printStackTrace();
+            // } catch (IOException e) {
+            // e.printStackTrace();
         } finally {
             if (conn != null) {
                 try {
@@ -95,9 +195,23 @@ class CleanAndGo {
         System.out.println("5. Quit");
     }
 
-    // Scenerio 1 (Updates)
+    public static void equipmentSupplyMenu() {
+        topMenu();
+        titlePadding(25);
+        System.out.println("Welcome To Clean-And-Go Shop");
+        titlePadding(27);
+        System.out.println("1. Equipment & Supplies");
+        bottomMenu();
+        titlePadding(25);
+        System.out.println("1. Analyze the progress of the business.");
+        titlePadding(35);
+        System.out.println("2. Equipment");
+        titlePadding(33);
+        System.out.println("3. Supplies");
+        titlePadding(25);
+        System.out.println("4. Go back to main menu");
+    }
 
-    // Scenerio 2 (Customers & Services)
     public static void customerServiceMenu() {
         topMenu();
         titlePadding(25);
@@ -105,6 +219,13 @@ class CleanAndGo {
         titlePadding(27);
         System.out.println("2. Customers & Services");
         bottomMenu();
+        System.out.println("1. Analyze the progress of the business");
+        titlePadding(27);
+        System.out.println("2. Services");
+        titlePadding(32);
+        System.out.println("3. Customers");
+        titlePadding(33);
+        System.out.println("4. Go back to main menu");
     }
 
     public static void employeeMenu() {
@@ -114,6 +235,9 @@ class CleanAndGo {
         titlePadding(31);
         System.out.println("3. Employees");
         bottomMenu();
+        System.out.println("1. Get Working Schedule");
+        titlePadding(33);
+        System.out.println("2. Go back to main menu");
     }
 
     public static void updatesMenu() {
@@ -168,7 +292,7 @@ class CleanAndGo {
         System.out.println();
     }
 
-    static String readEntry(String prompt) {
+    public static String readEntry(String prompt) {
         try {
             StringBuffer buffer = new StringBuffer();
             System.out.print(prompt);

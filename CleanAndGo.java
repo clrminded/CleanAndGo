@@ -4,10 +4,10 @@ import java.io.InputStreamReader;
 import java.sql.Connection;
 //import java.sql.Date;
 import java.sql.DriverManager;
-//import java.sql.PreparedStatement;
-//import java.sql.ResultSet;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-//import java.sql.Statement;
+import java.sql.Statement;
 
 class CleanAndGo {
     public static void main(String[] args) {
@@ -55,7 +55,7 @@ class CleanAndGo {
                                     System.out.println("2. Equipment");
                                     break;
                                 case '3':
-                                    System.out.println("3. Employees");
+                                    System.out.println("3. Supplies");
                                     break;
                                 case '4':
                                     System.out.println("4. Go back to main menu");
@@ -72,7 +72,7 @@ class CleanAndGo {
                         // main menu option 2 customer & services menu
                         boolean customerDone = false;
                         do {
-                            equipmentSupplyMenu();
+                            customerServiceMenu();
                             System.out.print("Type in your option: ");
                             System.out.flush();
                             String customer_ch = readLine();
@@ -83,10 +83,10 @@ class CleanAndGo {
                                     System.out.println("1. Analyze the progress of the business");
                                     break;
                                 case '2':
-                                    System.out.println("2. Services");
+                                    System.out.println("2. Customers");
                                     break;
                                 case '3':
-                                    System.out.println("3. Customers");
+                                    System.out.println("3. Services");
                                     break;
                                 case '4':
                                     System.out.println("4. Go back to main menu");
@@ -111,9 +111,11 @@ class CleanAndGo {
 
                             switch (employee_ch.charAt(0)) {
                                 case '1':
+                                    titlePadding(27);
                                     System.out.println("1. Get Working Schedule");
                                     break;
                                 case '2':
+                                    titlePadding(27);
                                     System.out.println("2. Go back to main menu");
                                     employeeDone = true;
                                     break;
@@ -136,7 +138,7 @@ class CleanAndGo {
 
                             switch (updates_ch.charAt(0)) {
                                 case '1':
-                                    System.out.println("1. Get Working Schedule");
+                                    System.out.println("1. Make Updates");
                                     break;
                                 case '2':
                                     System.out.println("2. Go back to main menu");
@@ -202,13 +204,13 @@ class CleanAndGo {
         titlePadding(27);
         System.out.println("1. Equipment & Supplies");
         bottomMenu();
-        titlePadding(25);
+        titlePadding(20);
         System.out.println("1. Analyze the progress of the business.");
-        titlePadding(35);
+        titlePadding(33);
         System.out.println("2. Equipment");
         titlePadding(33);
         System.out.println("3. Supplies");
-        titlePadding(25);
+        titlePadding(28);
         System.out.println("4. Go back to main menu");
     }
 
@@ -219,12 +221,13 @@ class CleanAndGo {
         titlePadding(27);
         System.out.println("2. Customers & Services");
         bottomMenu();
+        titlePadding(20);
         System.out.println("1. Analyze the progress of the business");
-        titlePadding(27);
-        System.out.println("2. Services");
-        titlePadding(32);
-        System.out.println("3. Customers");
         titlePadding(33);
+        System.out.println("2. Customers");
+        titlePadding(33);
+        System.out.println("3. Services");
+        titlePadding(28);
         System.out.println("4. Go back to main menu");
     }
 
@@ -235,8 +238,9 @@ class CleanAndGo {
         titlePadding(31);
         System.out.println("3. Employees");
         bottomMenu();
+        titlePadding(28);
         System.out.println("1. Get Working Schedule");
-        titlePadding(33);
+        titlePadding(28);
         System.out.println("2. Go back to main menu");
     }
 
@@ -247,6 +251,10 @@ class CleanAndGo {
         titlePadding(32);
         System.out.println("4. Updates");
         bottomMenu();
+        titlePadding(31);
+        System.out.println("1. Make updates");
+        titlePadding(28);
+        System.out.println("2. Go back to main menu");
     }
 
     public static void quitMenu() {

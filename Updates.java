@@ -44,6 +44,7 @@ public class Updates {
 }
 
 public static void updatesMenu() {
+    // options display for updates menu
     CleanAndGo.topMenu();
     CleanAndGo.titlePadding(25);
     System.out.println("Welcome to Clean-And-Go Shop");
@@ -63,6 +64,7 @@ public static void updatesMenu() {
 }
 
 public static void changeEquipment(){
+    // options menu to change equipment table
     boolean done = false;
         do {
             equipmentMenu();
@@ -74,6 +76,7 @@ public static void changeEquipment(){
 
             switch (ch.charAt(0)){
                 case '1':
+                    // inserts new equipment
                     System.out.print("Brand name: ");
                     System.out.flush();
                     String brand = CleanAndGo.readLine();
@@ -119,6 +122,7 @@ public static void changeEquipment(){
                     };
                     break;
                 case '2':
+                    // deletes equipment given id
                     System.out.print("Enter Equipment ID you wish to delete: ");
                     System.out.flush();
                     equipmentID = CleanAndGo.readLine();
@@ -128,6 +132,7 @@ public static void changeEquipment(){
                     System.out.println("Deletion Complete!");
                     break;
                 case '3':
+                    // updates equipment given id
                     System.out.print("Enter Equipment ID you wish to update: ");
                     System.out.flush();
                     equipmentID = CleanAndGo.readLine();
@@ -164,6 +169,7 @@ public static void changeEquipment(){
                     System.out.println("Update Complete!");
                     break;
                 case '4':
+                    // exits menu
                     done=true;
                     break;
                 default:
@@ -173,6 +179,7 @@ public static void changeEquipment(){
 }
 
 public static void equipmentMenu(){
+    // text menu for changeEquipment
     CleanAndGo.topMenu();
     CleanAndGo.titlePadding(25);
     System.out.println("Welcome to Clean-And-Go Shop");
@@ -190,6 +197,7 @@ public static void equipmentMenu(){
 }
 
 public static void changeServices(){
+    // options menu to change services
     boolean done = false;
         do {
             servicesMenu();
@@ -200,15 +208,19 @@ public static void changeServices(){
 
             switch (ch.charAt(0)){
                 case '1':
+                    // inserts new service
                     
                     break;
                 case '2':
+                    // deletes service given id
                     
                     break;
                 case '3':
+                    // updates service given id
                     
                     break;
-                case '4':
+                case '4':   
+                    // exits menu
                     done=true;
                     break;
                 default:
@@ -218,6 +230,7 @@ public static void changeServices(){
 }
 
 public static void servicesMenu(){
+    // text menu for changeServices
     CleanAndGo.topMenu();
     CleanAndGo.titlePadding(25);
     System.out.println("Welcome to Clean-And-Go Shop");
@@ -234,7 +247,8 @@ public static void servicesMenu(){
     System.out.println("4. Exit");
 }
 
-public static void changeCustomers(){
+public static void changeCustomers(){   
+    // options menu to change customers
     boolean done = false;
         do {
             customersMenu();
@@ -245,15 +259,19 @@ public static void changeCustomers(){
 
             switch (ch.charAt(0)){
                 case '1':
+                    // inserts new customer
                     
                     break;
                 case '2':
+                    // deletes customer given id
                     
                     break;
                 case '3':
+                    // updates customer given id
                     
                     break;
                 case '4':
+                    // exits menu
                     done=true;
                     break;
                 default:
@@ -263,6 +281,7 @@ public static void changeCustomers(){
 }
 
 public static void customersMenu(){
+    // text menu for changeCustomers
     CleanAndGo.topMenu();
     CleanAndGo.titlePadding(25);
     System.out.println("Welcome to Clean-And-Go Shop");
@@ -280,6 +299,7 @@ public static void customersMenu(){
 }
 
 public static void changeEmployees(){
+    // options menu to change employees
     boolean done = false;
         do {
             customersMenu();
@@ -290,15 +310,19 @@ public static void changeEmployees(){
 
             switch (ch.charAt(0)){
                 case '1':
+                    // inserts new employee
                     
                     break;
                 case '2':
+                    // deletes employee given id
                     
                     break;
                 case '3':
+                    // updates employee given id
                     
                     break;
                 case '4':
+                    // exits menu
                     done=true;
                     break;
                 default:
@@ -308,6 +332,7 @@ public static void changeEmployees(){
 }
 
 public static void employeeMenu(){
+    // text menu for changeEmployee
     CleanAndGo.topMenu();
     CleanAndGo.titlePadding(25);
     System.out.println("Welcome to Clean-And-Go Shop");

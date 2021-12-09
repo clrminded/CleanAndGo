@@ -11,7 +11,6 @@ import java.sql.Statement;
 
 public class Updates {
     Updates() throws SQLException {
-
         boolean done = false;
         do {
             updatesMenu();
@@ -33,6 +32,7 @@ public class Updates {
                     changeEmployees();
                     break;
                 case '5':
+                    CleanAndGo.quitMenu();
                     done=true;
                     break;
                 default:
@@ -67,13 +67,16 @@ public static void changeEquipment() throws SQLException{
     boolean done = false;
         do {
             equipmentMenu();
+            String user = CleanAndGo.readEntry("Userid: ");
+            String password = CleanAndGo.readEntry("Password: ");
+            String url = "jdbc:mysql://localhost:3306/CleanNGo?serverTimezone=UTC&useSSL=TRUE";
+            Connection conn = DriverManager.getConnection(url, user, password);
+            Statement stmt = conn.createStatement();
+
             System.out.print("Type in your option: ");
             System.out.flush();
             String ch = CleanAndGo.readLine();
             System.out.println();
-
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/CleanNGo?serverTimezone=UTC&useSSL=TRUE", "student", "password");
-            Statement stmt = conn.createStatement();
 
             switch (ch.charAt(0)){
                 case '1':
@@ -170,6 +173,7 @@ public static void changeEquipment() throws SQLException{
                     break;
                 case '4':
                     // exits menu
+                    CleanAndGo.quitMenu();
                     done=true;
                     break;
                 default:
@@ -201,13 +205,16 @@ public static void changeServices() throws SQLException{
     boolean done = false;
         do {
             servicesMenu();
+            String user = CleanAndGo.readEntry("Userid: ");
+            String password = CleanAndGo.readEntry("Password: ");
+            String url = "jdbc:mysql://localhost:3306/CleanNGo?serverTimezone=UTC&useSSL=TRUE";
+            Connection conn = DriverManager.getConnection(url, user, password);
+            Statement stmt = conn.createStatement();
+
             System.out.print("Type in your option: ");
             System.out.flush();
             String ch = CleanAndGo.readLine();
             System.out.println();
-
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/CleanNGo?serverTimezone=UTC&useSSL=TRUE", "student", "password");
-            Statement stmt = conn.createStatement();
 
             switch (ch.charAt(0)){
                 case '1':
@@ -244,6 +251,7 @@ public static void changeServices() throws SQLException{
                     break;
                 case '4':   
                     // exits menu
+                    CleanAndGo.quitMenu();
                     done=true;
                     break;
                 default:
@@ -270,11 +278,17 @@ public static void servicesMenu(){
     System.out.println("4. Exit");
 }
 
-public static void changeCustomers(){   
+public static void changeCustomers() throws SQLException{   
     // options menu to change customers
     boolean done = false;
         do {
             customersMenu();
+            String user = CleanAndGo.readEntry("Userid: ");
+            String password = CleanAndGo.readEntry("Password: ");
+            String url = "jdbc:mysql://localhost:3306/CleanNGo?serverTimezone=UTC&useSSL=TRUE";
+            Connection conn = DriverManager.getConnection(url, user, password);
+            Statement stmt = conn.createStatement();
+
             System.out.print("Type in your option: ");
             System.out.flush();
             String ch = CleanAndGo.readLine();
@@ -283,18 +297,22 @@ public static void changeCustomers(){
             switch (ch.charAt(0)){
                 case '1':
                     // inserts new customer
-                    
+                    String query = "";
+                    stmt.executeQuery(query);
                     break;
                 case '2':
                     // deletes customer given id
-                    
+                    query = "";
+                    stmt.executeQuery(query);
                     break;
                 case '3':
                     // updates customer given id
-                    
+                    query = "";
+                    stmt.executeQuery(query);
                     break;
                 case '4':
                     // exits menu
+                    CleanAndGo.quitMenu();
                     done=true;
                     break;
                 default:
@@ -321,11 +339,23 @@ public static void customersMenu(){
     System.out.println("4. Exit");
 }
 
-public static void changeEmployees(){
+public static void changeEmployees() throws SQLException{
     // options menu to change employees
     boolean done = false;
         do {
             customersMenu();
+            System.out.println("Userid: ");
+            System.out.flush();
+            String user = CleanAndGo.readLine();
+
+            System.out.println("Password: ");
+            System.out.flush();
+            String password = CleanAndGo.readLine();
+
+            String url = "jdbc:mysql://localhost:3306/CleanNGo?serverTimezone=UTC&useSSL=TRUE";
+            Connection conn = DriverManager.getConnection(url, user, password);
+            Statement stmt = conn.createStatement();
+
             System.out.print("Type in your option: ");
             System.out.flush();
             String ch = CleanAndGo.readLine();
@@ -334,18 +364,22 @@ public static void changeEmployees(){
             switch (ch.charAt(0)){
                 case '1':
                     // inserts new employee
-                    
+                    String query = "";
+                    stmt.executeQuery(query);
                     break;
                 case '2':
                     // deletes employee given id
-                    
+                    query = "";
+                    stmt.executeQuery(query);
                     break;
                 case '3':
                     // updates employee given id
-                    
+                    query = "";
+                    stmt.executeQuery(query);
                     break;
                 case '4':
                     // exits menu
+                    CleanAndGo.quitMenu();
                     done=true;
                     break;
                 default:

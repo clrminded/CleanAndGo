@@ -26,7 +26,7 @@ public class CustomersAndService {
                 CustomersAndService.customerServiceMenu();
                 System.out.print("Type in your option: ");
                 System.out.flush();
-                String customer_ch = CleanAndGo.readLine();
+                String customer_ch = Input.readLine();
                 System.out.println();
 
                 switch (customer_ch.charAt(0)) {
@@ -37,7 +37,7 @@ public class CustomersAndService {
                             CustomersAndService.customerService1Submenu();
                             System.out.print("Type in your option: ");
                             System.out.flush();
-                            String customer1Sub_ch = CleanAndGo.readLine();
+                            String customer1Sub_ch = Input.readLine();
                             System.out.println();
 
                             switch (customer1Sub_ch.charAt(0)) {
@@ -71,7 +71,7 @@ public class CustomersAndService {
                             CustomersAndService.customerService2Submenu();
                             System.out.print("Type in your option: ");
                             System.out.flush();
-                            String customer2Sub_ch = CleanAndGo.readLine();
+                            String customer2Sub_ch = Input.readLine();
                             System.out.println();
 
                             switch (customer2Sub_ch.charAt(0)) {
@@ -115,7 +115,7 @@ public class CustomersAndService {
                             CustomersAndService.customerService3Submenu();
                             System.out.print("Type in your option: ");
                             System.out.flush();
-                            String customer3Sub_ch = CleanAndGo.readLine();
+                            String customer3Sub_ch = Input.readLine();
                             System.out.println();
 
                             switch (customer3Sub_ch.charAt(0)) {

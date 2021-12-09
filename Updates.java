@@ -23,7 +23,7 @@ public class Updates {
                 updatesMenu();
                 System.out.print("Type in your option: ");
                 System.out.flush();
-                String updates_ch = CleanAndGo.readLine();
+                String updates_ch = Input.readLine();
                 System.out.println();
 
                 switch (updates_ch.charAt(0)) {

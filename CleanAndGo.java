@@ -1,6 +1,4 @@
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -27,7 +25,7 @@ class CleanAndGo {
                 welcomeMenu();
                 System.out.print("Type in your option: ");
                 System.out.flush();
-                String ch = readLine();
+                String ch = Input.readLine();
                 System.out.println();
 
                 switch (ch.charAt(0)) {
@@ -132,37 +130,6 @@ class CleanAndGo {
             System.out.print("*");
         }
         System.out.println();
-    }
-
-    public static String readEntry(String prompt) {
-        try {
-            StringBuffer buffer = new StringBuffer();
-            System.out.print(prompt);
-            System.out.flush();
-            int c = System.in.read();
-            while (c != '\n' && c != -1) {
-                buffer.append((char) c);
-                c = System.in.read();
-            }
-            return buffer.toString().trim();
-        } catch (IOException e) {
-            return "";
-        }
-    }
-
-    public static String readLine() {
-        InputStreamReader isr = new InputStreamReader(System.in);
-
-        BufferedReader br = new BufferedReader(isr, 1);
-        String line = "";
-
-        try {
-            line = br.readLine();
-        } catch (IOException e) {
-            System.out.println("Error in SimpleIO.readLine: " + "IOException was thrown");
-            System.exit(1);
-        }
-        return line;
     }
 
 }

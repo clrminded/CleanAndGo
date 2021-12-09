@@ -10,24 +10,21 @@ public class EquipmentAndSupplies {
 
     public static void connectToDB(String username, String password) throws IOException {
         Connection conn = null;
+
         try {
-            // Step 1: Load the JDBC driver
+
             Class.forName("com.mysql.cj.jdbc.Driver");
-            // Connect to the database
+
             String url = "jdbc:mysql://localhost:3306/CleanNGo?serverTimezone=UTC&useSSL=TRUE";
-            // String user;
-            // String pass;
-            // user = readEntry("userid : ");
-            // pass = readEntry("password: ");
+
             conn = DriverManager.getConnection(url, username, password);
-            // main menu option 2 customer & services menu
-            // main menu option 1 equipment & supplie menu
+
             boolean equipmentDone = false;
             do {
                 equipmentSupplyMenu();
                 System.out.print("Type in your option: ");
                 System.out.flush();
-                String equip_ch = CleanAndGo.readLine();
+                String equip_ch = Input.readLine();
                 System.out.println();
 
                 switch (equip_ch.charAt(0)) {
@@ -57,11 +54,7 @@ public class EquipmentAndSupplies {
             System.out.println("Could not load the driver");
         } catch (SQLException ex) {
             System.out.println(ex);
-        }
-        // } catch (IOException e) {
-        // e.printStackTrace();
-        // }
-        finally {
+        } finally {
             if (conn != null) {
                 try {
                     conn.close();

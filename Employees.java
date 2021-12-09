@@ -23,7 +23,7 @@ public class Employees {
                 employeeMenu();
                 System.out.print("Type in your option: ");
                 System.out.flush();
-                String employee_ch = CleanAndGo.readLine();
+                String employee_ch = Input.readLine();
                 System.out.println();
 
                 switch (employee_ch.charAt(0)) {

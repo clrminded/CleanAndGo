@@ -39,31 +39,7 @@ class CleanAndGo {
                         CustomersAndService.connectToDB(username, password);
                         break;
                     case '3':
-                        // main menu option 3 employee menu
-                        boolean employeeDone = false;
-                        do {
-                            employeeMenu();
-                            System.out.print("Type in your option: ");
-                            System.out.flush();
-                            String employee_ch = readLine();
-                            System.out.println();
-
-                            switch (employee_ch.charAt(0)) {
-                                case '1':
-                                    titlePadding(27);
-                                    System.out.println("1. Get Working Schedule");
-                                    break;
-                                case '2':
-                                    titlePadding(27);
-                                    System.out.println("2. Go back to main menu");
-                                    employeeDone = true;
-                                    break;
-                                default:
-                                    // repeats if non valid option is chosen
-                                    System.out.println(" Not a valid option ");
-                            }
-                        } while (!employeeDone);
-
+                        Employees.connectToDB(username, password);
                         break; // end of main menu option 3
                     case '4':
                         // main menu option 4 updates menu
@@ -113,19 +89,6 @@ class CleanAndGo {
         System.out.println("4. Updates");
         titlePadding(34);
         System.out.println("5. Quit");
-    }
-
-    public static void employeeMenu() {
-        topMenu();
-        titlePadding(25);
-        System.out.println("Welcome To Clean-And-Go Shop");
-        titlePadding(31);
-        System.out.println("3. Employees");
-        bottomMenu();
-        titlePadding(28);
-        System.out.println("1. Get Working Schedule");
-        titlePadding(28);
-        System.out.println("2. Go back to main menu");
     }
 
     public static void quitMenu() {

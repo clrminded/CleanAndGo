@@ -38,21 +38,17 @@ class CleanAndGo {
                         break;
                     case '3':
                         Employees.connectToDB(username, password);
-                        break; // end of main menu option 3
+                        break;
                     case '4':
-                        // main menu option 4 updates menu
                         Updates.connectToDB(username, password);
                         break;
                     case '5':
-                        // main menu option 5 quit program
                         quitMenu();
                         done = true;
                         break;
                     default:
-                        // repeats if non valid option is chosen
                         System.out.println(" Not a valid option ");
-                } // end of main menu switch
-
+                }
             } while (!done);
 
         } catch (ClassNotFoundException e) {

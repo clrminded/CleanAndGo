@@ -6,7 +6,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class CustomersAndService {
+public class AnalyzeBusiness {
 
     public static void connectToDB(String username, String password) throws IOException {
         Connection conn = null;
@@ -18,40 +18,41 @@ public class CustomersAndService {
 
             conn = DriverManager.getConnection(url, username, password);
 
-            boolean customerDone = false;
+            boolean customer1SubDone = false;
             do {
-                CustomersAndService.customerServiceMenu();
+                customerService1Submenu();
                 System.out.print("Type in your option: ");
                 System.out.flush();
-                String customer_ch = Input.readLine();
+                String customer1Sub_ch = Input.readLine();
                 System.out.println();
 
-                switch (customer_ch.charAt(0)) {
-
-                    case '1':
-                        AnalyzeBusiness.connectToDB(username, password);
+                switch (customer1Sub_ch.charAt(0)) {
+                    case 'A':
+                    case 'a':
+                        System.out.println("Total number of new customers");
+                        Queries.selectAllCustomerNames(conn);
                         break;
-                    case '2':
-                        ServicesSection.connectToDB(username, password);
+                    case 'B':
+                    case 'b':
+                        System.out.println("Total number of service transactions");
+                        Queries.selectAllSupplierNames(conn);
                         break;
-                    case '3':
-                        CustomersSection.connectToDB(username, password);
-                        break; // end of customer submenu 3
-                    case '4':
-                        System.out.println("4. Go back to main menu");
-                        customerDone = true;
+                    case 'C':
+                    case 'c':
+                        System.out.println("Go back to customers & services menu");
+                        customer1SubDone = true;
                         break;
                     default:
-                        System.out.println(" Not a valid option ");
+                        System.out.println("Not a valid option, try again");
+
                 }
-            } while (!customerDone);
+
+            } while (!customer1SubDone);
 
         } catch (ClassNotFoundException e) {
             System.out.println("Could not load the driver");
         } catch (SQLException ex) {
             System.out.println(ex);
-        } catch (IOException e) {
-            e.printStackTrace();
         } finally {
             if (conn != null) {
                 try {
@@ -63,21 +64,19 @@ public class CustomersAndService {
         }
     }
 
-    public static void customerServiceMenu() {
+    public static void customerService1Submenu() {
         CleanAndGo.topMenu();
-        CleanAndGo.titlePadding(25);
-        System.out.println("Welcome To Clean-And-Go Shop");
         CleanAndGo.titlePadding(27);
-        System.out.println("2. Customers & Services");
-        CleanAndGo.bottomMenu();
+        System.out.println("Customers & Services");
         CleanAndGo.titlePadding(20);
         System.out.println("1. Analyze the progress of the business");
-        CleanAndGo.titlePadding(33);
-        System.out.println("2. Services");
-        CleanAndGo.titlePadding(33);
-        System.out.println("3. Customers");
-        CleanAndGo.titlePadding(28);
-        System.out.println("4. Go back to main menu");
-    }
+        CleanAndGo.bottomMenu();
+        CleanAndGo.titlePadding(22);
+        System.out.println("A. Total number of new customers.");
+        CleanAndGo.titlePadding(20);
+        System.out.println("B. Total number of service transactions.");
+        CleanAndGo.titlePadding(21);
+        System.out.println("C. Go back to customers & services menu");
 
+    }
 }

@@ -20,7 +20,7 @@ public class ServicesSection {
 
             boolean customer2SubDone = false;
             do {
-                customerService2Submenu();
+                UI.csSubmenu2();
                 System.out.print("Type in your option: ");
                 System.out.flush();
                 String customer2Sub_ch = Input.readLine();
@@ -76,21 +76,4 @@ public class ServicesSection {
         }
     }
 
-    public static void customerService2Submenu() {
-        CleanAndGo.topMenu();
-        CleanAndGo.titlePadding(27);
-        System.out.println("Customers & Services");
-        CleanAndGo.titlePadding(30);
-        System.out.println("2. Services");
-        CleanAndGo.bottomMenu();
-        CleanAndGo.titlePadding(27);
-        System.out.println("A. Requested Services.");
-        CleanAndGo.titlePadding(27);
-        System.out.println("B. Service transactions.");
-        CleanAndGo.titlePadding(23);
-        System.out.println("C. Annual revenues from services");
-        CleanAndGo.titlePadding(21);
-        System.out.println("D. Go back to customers & services menu");
-
-    }
 }

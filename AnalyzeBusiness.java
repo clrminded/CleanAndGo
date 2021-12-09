@@ -20,7 +20,7 @@ public class AnalyzeBusiness {
 
             boolean customer1SubDone = false;
             do {
-                customerService1Submenu();
+                UI.csSubmenu1();
                 System.out.print("Type in your option: ");
                 System.out.flush();
                 String customer1Sub_ch = Input.readLine();
@@ -62,21 +62,5 @@ public class AnalyzeBusiness {
                 }
             }
         }
-    }
-
-    public static void customerService1Submenu() {
-        CleanAndGo.topMenu();
-        CleanAndGo.titlePadding(27);
-        System.out.println("Customers & Services");
-        CleanAndGo.titlePadding(20);
-        System.out.println("1. Analyze the progress of the business");
-        CleanAndGo.bottomMenu();
-        CleanAndGo.titlePadding(22);
-        System.out.println("A. Total number of new customers.");
-        CleanAndGo.titlePadding(20);
-        System.out.println("B. Total number of service transactions.");
-        CleanAndGo.titlePadding(21);
-        System.out.println("C. Go back to customers & services menu");
-
     }
 }

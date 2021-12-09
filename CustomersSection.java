@@ -20,7 +20,7 @@ public class CustomersSection {
 
             boolean customer3SubDone = false;
             do {
-                customerService3Submenu();
+                UI.csSubmenu3();
                 System.out.print("Type in your option: ");
                 System.out.flush();
                 String customer3Sub_ch = Input.readLine();
@@ -67,22 +67,6 @@ public class CustomersSection {
                 }
             }
         }
-    }
-
-    public static void customerService3Submenu() {
-        CleanAndGo.topMenu();
-        CleanAndGo.titlePadding(27);
-        System.out.println("Customers & Services");
-        CleanAndGo.titlePadding(20);
-        System.out.println("3. Customers");
-        CleanAndGo.bottomMenu();
-        CleanAndGo.titlePadding(22);
-        System.out.println("A. Customer list for a service.");
-        CleanAndGo.titlePadding(20);
-        System.out.println("B. Customer number.");
-        CleanAndGo.titlePadding(21);
-        System.out.println("C. Go back to customers & services menu");
-
     }
 
 }

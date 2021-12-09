@@ -20,7 +20,7 @@ public class Updates {
 
             boolean updatesDone = false;
             do {
-                updatesMenu();
+                UI.updatesMain();
                 System.out.print("Type in your option: ");
                 System.out.flush();
                 String updates_ch = Input.readLine();
@@ -61,77 +61,4 @@ public class Updates {
         }
     }
 
-    public static void updatesMenu() {
-        CleanAndGo.topMenu();
-        CleanAndGo.titlePadding(25);
-        System.out.println("Welcome To Clean-And-Go Shop");
-        CleanAndGo.titlePadding(32);
-        System.out.println("4. Updates");
-        CleanAndGo.bottomMenu();
-        CleanAndGo.titlePadding(31);
-        System.out.println("1. Insert new information");
-        CleanAndGo.titlePadding(28);
-        System.out.println("2. Delete some information");
-        CleanAndGo.titlePadding(28);
-        System.out.println("3. Update current information");
-        CleanAndGo.titlePadding(28);
-        System.out.println("4. Go back to main menu");
-    }
-
-    public static void updates1Submenu() {
-        CleanAndGo.topMenu();
-        CleanAndGo.titlePadding(25);
-        System.out.println("Updates");
-        CleanAndGo.titlePadding(32);
-        System.out.println("1. Insert New Information");
-        CleanAndGo.bottomMenu();
-        CleanAndGo.titlePadding(31);
-        System.out.println("A. Add new equipment");
-        CleanAndGo.titlePadding(28);
-        System.out.println("B. Add new service");
-        CleanAndGo.titlePadding(28);
-        System.out.println("C. Add new customer information");
-        CleanAndGo.titlePadding(28);
-        System.out.println("D. Add new employee information");
-        CleanAndGo.titlePadding(28);
-        System.out.println("E. Go back to Updates menu");
-    }
-
-    public static void updates2Submenu() {
-        CleanAndGo.topMenu();
-        CleanAndGo.titlePadding(25);
-        System.out.println("Updates");
-        CleanAndGo.titlePadding(32);
-        System.out.println("2. Delete some information");
-        CleanAndGo.bottomMenu();
-        CleanAndGo.titlePadding(31);
-        System.out.println("A. Delete specific eqipment");
-        CleanAndGo.titlePadding(28);
-        System.out.println("B. Delete specific service");
-        CleanAndGo.titlePadding(28);
-        System.out.println("C. Delete specific customer information");
-        CleanAndGo.titlePadding(28);
-        System.out.println("D. Delete specific employee information");
-        CleanAndGo.titlePadding(28);
-        System.out.println("E. Go back to Updates menu");
-    }
-
-    public static void updates3Submenu() {
-        CleanAndGo.topMenu();
-        CleanAndGo.titlePadding(25);
-        System.out.println("Updates");
-        CleanAndGo.titlePadding(32);
-        System.out.println("3. Update Current Information");
-        CleanAndGo.bottomMenu();
-        CleanAndGo.titlePadding(31);
-        System.out.println("A. Update specific eqipment");
-        CleanAndGo.titlePadding(28);
-        System.out.println("B. Update specific service");
-        CleanAndGo.titlePadding(28);
-        System.out.println("C. Update specific customer information");
-        CleanAndGo.titlePadding(28);
-        System.out.println("D. Update specific employee information");
-        CleanAndGo.titlePadding(28);
-        System.out.println("E. Go back to Updates menu");
-    }
 }

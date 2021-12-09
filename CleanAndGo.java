@@ -18,10 +18,7 @@ class CleanAndGo {
             Class.forName("com.mysql.cj.jdbc.Driver");
             // Connect to the database
             String url = "jdbc:mysql://localhost:3306/CleanNGo?serverTimezone=UTC&useSSL=TRUE";
-            // String user;
-            // String pass;
-            // user = readEntry("userid : ");
-            // pass = readEntry("password: ");
+
             conn = DriverManager.getConnection(url, username, password);
 
             boolean done = false;
@@ -70,33 +67,7 @@ class CleanAndGo {
                         break; // end of main menu option 3
                     case '4':
                         // main menu option 4 updates menu
-                        boolean updatesDone = false;
-                        do {
-                            updatesMenu();
-                            System.out.print("Type in your option: ");
-                            System.out.flush();
-                            String updates_ch = readLine();
-                            System.out.println();
-
-                            switch (updates_ch.charAt(0)) {
-                                case '1':
-                                    System.out.println("1. Insert new information");
-                                    break;
-                                case '2':
-                                    System.out.println("2. Delete some information");
-                                    break;
-                                case '3':
-                                    System.out.println("3. Update current information");
-                                    break;
-                                case '4':
-                                    System.out.println("4. Go back to main menu");
-                                    updatesDone = true;
-                                    break;
-                                default:
-                                    // repeats if non valid option is chosen
-                                    System.out.println(" Not a valid option ");
-                            }
-                        } while (!updatesDone);
+                        Updates.connectToDB(username, password);
                         break;
                     case '5':
                         // main menu option 5 quit program
@@ -155,80 +126,6 @@ class CleanAndGo {
         System.out.println("1. Get Working Schedule");
         titlePadding(28);
         System.out.println("2. Go back to main menu");
-    }
-
-    public static void updatesMenu() {
-        topMenu();
-        titlePadding(25);
-        System.out.println("Welcome To Clean-And-Go Shop");
-        titlePadding(32);
-        System.out.println("4. Updates");
-        bottomMenu();
-        titlePadding(31);
-        System.out.println("1. Insert new information");
-        titlePadding(28);
-        System.out.println("2. Delete some information");
-        titlePadding(28);
-        System.out.println("3. Update current information");
-        titlePadding(28);
-        System.out.println("4. Go back to main menu");
-    }
-
-    public static void updates1Submenu() {
-        topMenu();
-        titlePadding(25);
-        System.out.println("Updates");
-        titlePadding(32);
-        System.out.println("1. Insert New Information");
-        bottomMenu();
-        titlePadding(31);
-        System.out.println("A. Add new equipment");
-        titlePadding(28);
-        System.out.println("B. Add new service");
-        titlePadding(28);
-        System.out.println("C. Add new customer information");
-        titlePadding(28);
-        System.out.println("D. Add new employee information");
-        titlePadding(28);
-        System.out.println("E. Go back to Updates menu");
-    }
-
-    public static void updates2Submenu() {
-        topMenu();
-        titlePadding(25);
-        System.out.println("Updates");
-        titlePadding(32);
-        System.out.println("2. Delete some information");
-        bottomMenu();
-        titlePadding(31);
-        System.out.println("A. Delete specific eqipment");
-        titlePadding(28);
-        System.out.println("B. Delete specific service");
-        titlePadding(28);
-        System.out.println("C. Delete specific customer information");
-        titlePadding(28);
-        System.out.println("D. Delete specific employee information");
-        titlePadding(28);
-        System.out.println("E. Go back to Updates menu");
-    }
-
-    public static void updates3Submenu() {
-        topMenu();
-        titlePadding(25);
-        System.out.println("Updates");
-        titlePadding(32);
-        System.out.println("3. Update Current Information");
-        bottomMenu();
-        titlePadding(31);
-        System.out.println("A. Update specific eqipment");
-        titlePadding(28);
-        System.out.println("B. Update specific service");
-        titlePadding(28);
-        System.out.println("C. Update specific customer information");
-        titlePadding(28);
-        System.out.println("D. Update specific employee information");
-        titlePadding(28);
-        System.out.println("E. Go back to Updates menu");
     }
 
     public static void quitMenu() {

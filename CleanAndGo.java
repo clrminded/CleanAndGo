@@ -2,7 +2,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.sql.Connection;
-//import java.sql.Date;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 class CleanAndGo {
+
     public static void main(String[] args) {
         connectToDB("student", "password");
     }
@@ -79,14 +80,46 @@ class CleanAndGo {
                             System.out.println();
 
                             switch (customer_ch.charAt(0)) {
+
                                 case '1':
-                                    System.out.println("1. Analyze the progress of the business");
+                                    boolean customerSubDone = false;
+                                    do {
+                                        customerServiceSubmenu();
+                                        System.out.print("Type in your option: ");
+                                        System.out.flush();
+                                        String customerSub_ch = readLine();
+                                        System.out.println();
+
+                                        switch (customerSub_ch.charAt(0)) {
+                                            case 'A':
+                                            case 'a':
+                                                System.out.println("Total number of new customers");
+                                                selectAllCustomerNames(conn);
+                                                break;
+                                            case 'B':
+                                            case 'b':
+                                                System.out.println("Total number of service transactions");
+                                                selectAllSupplierNames(conn);
+                                                break;
+                                            case 'C':
+                                            case 'c':
+                                                System.out.println("Go back to customers & services menu");
+                                                customerSubDone = true;
+                                                break;
+                                            default:
+                                                System.out.println("Not a valid option, try again");
+
+                                        }
+
+                                    } while (!customerSubDone);
+
                                     break;
                                 case '2':
-                                    System.out.println("2. Customers");
+                                    System.out.println("2. Services");
+                                    findAllSuppliers(conn);
                                     break;
                                 case '3':
-                                    System.out.println("3. Services");
+                                    System.out.println("3. Customers");
                                     break;
                                 case '4':
                                     System.out.println("4. Go back to main menu");
@@ -167,8 +200,8 @@ class CleanAndGo {
             System.out.println("Could not load the driver");
         } catch (SQLException ex) {
             System.out.println(ex);
-            // } catch (IOException e) {
-            // e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         } finally {
             if (conn != null) {
                 try {
@@ -224,11 +257,27 @@ class CleanAndGo {
         titlePadding(20);
         System.out.println("1. Analyze the progress of the business");
         titlePadding(33);
-        System.out.println("2. Customers");
+        System.out.println("2. Services");
         titlePadding(33);
-        System.out.println("3. Services");
+        System.out.println("3. Customers");
         titlePadding(28);
         System.out.println("4. Go back to main menu");
+    }
+
+    public static void customerServiceSubmenu() {
+        topMenu();
+        titlePadding(27);
+        System.out.println("Customers & Services");
+        titlePadding(20);
+        System.out.println("1. Analyze the progress of the business");
+        bottomMenu();
+        titlePadding(22);
+        System.out.println("A. Total number of new customers.");
+        titlePadding(20);
+        System.out.println("B. Total number of service transactions.");
+        titlePadding(21);
+        System.out.println("C. Go back to customers & services menu");
+
     }
 
     public static void employeeMenu() {
@@ -329,6 +378,80 @@ class CleanAndGo {
             System.exit(1);
         }
         return line;
+    }
+
+    /*
+     * ------------------------------ QUERY FUNCTIONS ------------------------------
+     */
+
+    public static void findAllSuppliers(Connection conn) throws SQLException, IOException {
+        Statement stmt = conn.createStatement();
+
+        String query = "SELECT s.id, s.Name FROM Supplier AS s";
+        PreparedStatement p = conn.prepareStatement(query);
+
+        p.clearParameters();
+
+        ResultSet r = p.executeQuery();
+
+        System.out.println("    Count New Customers");
+        System.out.println("--------------------------------------------------\n");
+
+        while (r.next()) {
+            int id = r.getInt(1);
+            String name = r.getString(2);
+
+            System.out.println(id + " " + name);
+        }
+
+        // Close the statement
+        stmt.close();
+    }
+
+    public static void selectAllCustomerNames(Connection conn) throws SQLException, IOException {
+        Statement stmt = conn.createStatement();
+
+        String query = "SELECT C.Name FROM Customer AS C";
+        PreparedStatement p = conn.prepareStatement(query);
+
+        p.clearParameters();
+
+        ResultSet r = p.executeQuery();
+
+        System.out.println("    Names of all Customers");
+        System.out.println("--------------------------------------------------\n");
+
+        while (r.next()) {
+            String name = r.getString(1);
+
+            System.out.println(name);
+        }
+
+        // Close the statement
+        stmt.close();
+    }
+
+    public static void selectAllSupplierNames(Connection conn) throws SQLException, IOException {
+        Statement stmt = conn.createStatement();
+
+        String query = "SELECT S.Name FROM Supplier AS S";
+        PreparedStatement p = conn.prepareStatement(query);
+
+        p.clearParameters();
+
+        ResultSet r = p.executeQuery();
+
+        System.out.println("    Names of all Suppliers");
+        System.out.println("--------------------------------------------------\n");
+
+        while (r.next()) {
+            String name = r.getString(1);
+
+            System.out.println(name);
+        }
+
+        // Close the statement
+        stmt.close();
     }
 
 }

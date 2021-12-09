@@ -41,7 +41,7 @@ public class Updates {
             }
         } while (!done);
     }
-}
+
 
 public static void updatesMenu() {
     // options display for updates menu
@@ -72,6 +72,7 @@ public static void changeEquipment(){
             System.out.flush();
             String ch = CleanAndGo.readLine();
             System.out.println();
+            
             Statement stmt = conn.createStatement();
 
             switch (ch.charAt(0)){
@@ -82,25 +83,25 @@ public static void changeEquipment(){
                     String brand = CleanAndGo.readLine();
                     System.out.print("Purchase Date YYYY-MM-DD: ");
                     System.out.flush();
-                    Date purchaseDate = CleanAndGo.readLine();
+                    String purchaseDate = CleanAndGo.readLine();
                     System.out.print("Purchase Price: ");
                     System.out.flush();
-                    Double purchasePrice = CleanAndGo.readLine();
+                    String purchasePrice = CleanAndGo.readLine();
                     System.out.print("Equipment Type: ");
                     System.out.flush();
                     String equipmentType = CleanAndGo.readLine();
                     System.out.print("Equipment Lifespan (Months): ");
                     System.out.flush();
-                    Double LifeSpanMonths = CleanAndGo.readLine();
+                    String LifeSpanMonths = CleanAndGo.readLine();
                     System.out.print("Retire Date YYYY-MM-DD: ");
                     System.out.flush();
-                    Date RetiredDate = CleanAndGo.readLine();
+                    String RetiredDate = CleanAndGo.readLine();
                     System.out.print("Supplier ID: ");
                     System.out.flush();
-                    Integer SupplierID = CleanAndGo.readLine();
+                    String SupplierID = CleanAndGo.readLine();
                     System.out.print("Cycle Length in Minutes: ");
                     System.out.flush();
-                    Integer CycleLengthMin = CleanAndGo.readLine();
+                    String CycleLengthMin = CleanAndGo.readLine();
 
 
                     String query = "INSERT INTO Equipment(Brand, PurchaseDate, PurchasePrice, Type, LifeSpanMonths, RetiredDate, SupplierID, CycleLengthMin) "
@@ -110,22 +111,21 @@ public static void changeEquipment(){
 
                     query = "SELECT id, Brand from Equipment;";
                     ResultSet rset = stmt.executeQuery(query);
-                    Integer equipmentID;
                     
                     System.out.println("Addition Complete!");
                     System.out.println("                       Equipment List");
                     System.out.println("-------------------------------------------------------------");
                     while(rset.next()){
-                        equipmentID = rset.getInt(1);
+                        Integer eID = rset.getInt(1);
                         String brandName = rset.getString(2);
-                        System.out.println("Equipment ID: "+equipmentID+ " Brand Name: "+brandName);
+                        System.out.println("Equipment ID: "+eID+ " Brand Name: "+brandName);
                     };
                     break;
                 case '2':
                     // deletes equipment given id
                     System.out.print("Enter Equipment ID you wish to delete: ");
                     System.out.flush();
-                    equipmentID = CleanAndGo.readLine();
+                    String equipmentID = CleanAndGo.readLine();
 
                     query = "DELETE FROM Equipment WHERE id="+ equipmentID + ";";
                     stmt.executeQuery(query); 
@@ -205,10 +205,17 @@ public static void changeServices(){
             System.out.flush();
             String ch = CleanAndGo.readLine();
             System.out.println();
+            Statement stmt = conn.createStatement();
 
             switch (ch.charAt(0)){
                 case '1':
                     // inserts new service
+                    System.out.println("Name of Service: ");
+                    System.out.flush();
+                    String sName = CleanAndGo.readLine();
+
+                    System.out.println("Description of Service: ");
+                    System.out.flush();
                     
                     break;
                 case '2':
@@ -347,4 +354,4 @@ public static void employeeMenu(){
     System.out.println("3. Update Employee");
     CleanAndGo.titlePadding(25);
     System.out.println("4. Exit");
-}
+}}

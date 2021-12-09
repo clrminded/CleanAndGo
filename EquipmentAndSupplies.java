@@ -21,7 +21,7 @@ public class EquipmentAndSupplies {
 
             boolean equipmentDone = false;
             do {
-                equipmentSupplyMenu();
+                UI.equipmentSupplyMain();
                 System.out.print("Type in your option: ");
                 System.out.flush();
                 String equip_ch = Input.readLine();
@@ -45,7 +45,6 @@ public class EquipmentAndSupplies {
                         equipmentDone = true;
                         break;
                     default:
-                        // repeats if non valid option is chosen
                         System.out.println(" Not a valid option ");
                 }
             } while (!equipmentDone);
@@ -63,23 +62,6 @@ public class EquipmentAndSupplies {
                 }
             }
         }
-    }
-
-    public static void equipmentSupplyMenu() {
-        CleanAndGo.topMenu();
-        CleanAndGo.titlePadding(25);
-        System.out.println("Welcome To Clean-And-Go Shop");
-        CleanAndGo.titlePadding(27);
-        System.out.println("1. Equipment & Supplies");
-        CleanAndGo.bottomMenu();
-        CleanAndGo.titlePadding(20);
-        System.out.println("1. Analyze the progress of the business.");
-        CleanAndGo.titlePadding(33);
-        System.out.println("2. Equipment");
-        CleanAndGo.titlePadding(33);
-        System.out.println("3. Supplies");
-        CleanAndGo.titlePadding(28);
-        System.out.println("4. Go back to main menu");
     }
 
 }

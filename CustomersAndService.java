@@ -20,7 +20,7 @@ public class CustomersAndService {
 
             boolean customerDone = false;
             do {
-                CustomersAndService.customerServiceMenu();
+                UI.customersAndServiceMain();
                 System.out.print("Type in your option: ");
                 System.out.flush();
                 String customer_ch = Input.readLine();
@@ -61,23 +61,6 @@ public class CustomersAndService {
                 }
             }
         }
-    }
-
-    public static void customerServiceMenu() {
-        CleanAndGo.topMenu();
-        CleanAndGo.titlePadding(25);
-        System.out.println("Welcome To Clean-And-Go Shop");
-        CleanAndGo.titlePadding(27);
-        System.out.println("2. Customers & Services");
-        CleanAndGo.bottomMenu();
-        CleanAndGo.titlePadding(20);
-        System.out.println("1. Analyze the progress of the business");
-        CleanAndGo.titlePadding(33);
-        System.out.println("2. Services");
-        CleanAndGo.titlePadding(33);
-        System.out.println("3. Customers");
-        CleanAndGo.titlePadding(28);
-        System.out.println("4. Go back to main menu");
     }
 
 }

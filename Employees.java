@@ -1,7 +1,4 @@
-
-//import java.io.BufferedReader;
 import java.io.IOException;
-//import java.io.InputStreamReader;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -20,7 +17,7 @@ public class Employees {
             // main menu option 3 employee menu
             boolean employeeDone = false;
             do {
-                employeeMenu();
+                UI.employeeMain();
                 System.out.print("Type in your option: ");
                 System.out.flush();
                 String employee_ch = Input.readLine();
@@ -28,11 +25,11 @@ public class Employees {
 
                 switch (employee_ch.charAt(0)) {
                     case '1':
-                        CleanAndGo.titlePadding(27);
+                        UI.titlePadding(27);
                         System.out.println("1. Get Working Schedule");
                         break;
                     case '2':
-                        CleanAndGo.titlePadding(27);
+                        UI.titlePadding(27);
                         System.out.println("2. Go back to main menu");
                         employeeDone = true;
                         break;
@@ -57,16 +54,4 @@ public class Employees {
         }
     }
 
-    public static void employeeMenu() {
-        CleanAndGo.topMenu();
-        CleanAndGo.titlePadding(25);
-        System.out.println("Welcome To Clean-And-Go Shop");
-        CleanAndGo.titlePadding(31);
-        System.out.println("3. Employees");
-        CleanAndGo.bottomMenu();
-        CleanAndGo.titlePadding(28);
-        System.out.println("1. Get Working Schedule");
-        CleanAndGo.titlePadding(28);
-        System.out.println("2. Go back to main menu");
-    }
 }

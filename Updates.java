@@ -1,17 +1,17 @@
 //import java.io.BufferedReader;
-import java.io.IOException;
+//import java.io.IOException;
 //import java.io.InputStreamReader;
 import java.sql.Connection;
-import java.sql.Date;
 //import java.sql.Date;
-//import java.sql.DriverManager;
-import java.sql.PreparedStatement;
+import java.sql.DriverManager;
+//import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 public class Updates {
-    Updates() {
+    Updates() throws SQLException {
+
         boolean done = false;
         do {
             updatesMenu();
@@ -19,7 +19,6 @@ public class Updates {
             System.out.flush();
             String ch = CleanAndGo.readLine();
             System.out.println();
-
             switch (ch.charAt(0)){
                 case '1':
                     changeEquipment();
@@ -63,7 +62,7 @@ public static void updatesMenu() {
     System.out.println("5. Exit");
 }
 
-public static void changeEquipment(){
+public static void changeEquipment() throws SQLException{
     // options menu to change equipment table
     boolean done = false;
         do {
@@ -72,7 +71,8 @@ public static void changeEquipment(){
             System.out.flush();
             String ch = CleanAndGo.readLine();
             System.out.println();
-            
+
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/CleanNGo?serverTimezone=UTC&useSSL=TRUE", "student", "password");
             Statement stmt = conn.createStatement();
 
             switch (ch.charAt(0)){
@@ -106,7 +106,7 @@ public static void changeEquipment(){
 
                     String query = "INSERT INTO Equipment(Brand, PurchaseDate, PurchasePrice, Type, LifeSpanMonths, RetiredDate, SupplierID, CycleLengthMin) "
                      + "VALUES (" + brand + ", " + purchaseDate + ", " + purchasePrice + ", " + equipmentType + ", " + LifeSpanMonths + ", "
-                     + RetiredDate + ", " + SupplierID + ", " + CycleLengthMin + ")";
+                     + RetiredDate + ", " + SupplierID + ", " + CycleLengthMin + ");";
                     stmt.executeQuery(query);
 
                     query = "SELECT id, Brand from Equipment;";
@@ -196,7 +196,7 @@ public static void equipmentMenu(){
     System.out.println("4. Exit");
 }
 
-public static void changeServices(){
+public static void changeServices() throws SQLException{
     // options menu to change services
     boolean done = false;
         do {
@@ -205,26 +205,42 @@ public static void changeServices(){
             System.out.flush();
             String ch = CleanAndGo.readLine();
             System.out.println();
+
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/CleanNGo?serverTimezone=UTC&useSSL=TRUE", "student", "password");
             Statement stmt = conn.createStatement();
 
             switch (ch.charAt(0)){
                 case '1':
                     // inserts new service
-                    System.out.println("Name of Service: ");
+                    System.out.println("Service Name: ");
                     System.out.flush();
                     String sName = CleanAndGo.readLine();
 
-                    System.out.println("Description of Service: ");
+                    System.out.println("Service Description: ");
                     System.out.flush();
+                    String desc = CleanAndGo.readLine();
                     
+                    System.out.println("Service Price Rate per Hour: ");
+                    System.out.flush();
+                    String rate = CleanAndGo.readLine();
+
+                    System.out.println("Service Duration in Hours:");
+                    System.out.flush();
+                    String duration = CleanAndGo.readLine();
+
+                    String query = "INSERT INTO Service(Name, Description, Rate, DurationHours) " 
+                    + "VALUES ("+sName+", "+desc+", "+rate+", "+duration+");";
+                    stmt.executeQuery(query);
                     break;
                 case '2':
                     // deletes service given id
-                    
+                    query = "DELETE FROM Service";
+                    stmt.executeQuery(query);
                     break;
                 case '3':
                     // updates service given id
-                    
+                    query = "UPDATE Service";
+                    stmt.executeQuery(query);
                     break;
                 case '4':   
                     // exits menu

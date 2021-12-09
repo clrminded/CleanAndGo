@@ -34,44 +34,13 @@ class CleanAndGo {
                 System.out.println();
 
                 switch (ch.charAt(0)) {
-                    /*
-                     * ------------------------------ EQUIPMENT & SUPPLIES
-                     * ----------------------------
-                     */
+
                     case '1':
-                        // main menu option 1 equipment & supplie menu
-                        boolean equipmentDone = false;
-                        do {
-                            equipmentSupplyMenu();
-                            System.out.print("Type in your option: ");
-                            System.out.flush();
-                            String equip_ch = readLine();
-                            System.out.println();
-
-                            switch (equip_ch.charAt(0)) {
-                                case '1':
-                                    System.out.println("1. Analyze the progress of the business.");
-                                    break;
-                                case '2':
-                                    System.out.println("2. Equipment");
-                                    break;
-                                case '3':
-                                    System.out.println("3. Supplies");
-                                    break;
-                                case '4':
-                                    System.out.println("4. Go back to main menu");
-                                    equipmentDone = true;
-                                    break;
-                                default:
-                                    // repeats if non valid option is chosen
-                                    System.out.println(" Not a valid option ");
-                            }
-                        } while (!equipmentDone);
-
-                        break; // end of main menu option 1
-
+                        EquipmentAndSupplies.connectToDB(username, password);
+                        break;
                     case '2':
                         CustomersAndService.connectToDB(username, password);
+                        break;
                     case '3':
                         // main menu option 3 employee menu
                         boolean employeeDone = false;
@@ -173,23 +142,6 @@ class CleanAndGo {
         System.out.println("4. Updates");
         titlePadding(34);
         System.out.println("5. Quit");
-    }
-
-    public static void equipmentSupplyMenu() {
-        topMenu();
-        titlePadding(25);
-        System.out.println("Welcome To Clean-And-Go Shop");
-        titlePadding(27);
-        System.out.println("1. Equipment & Supplies");
-        bottomMenu();
-        titlePadding(20);
-        System.out.println("1. Analyze the progress of the business.");
-        titlePadding(33);
-        System.out.println("2. Equipment");
-        titlePadding(33);
-        System.out.println("3. Supplies");
-        titlePadding(28);
-        System.out.println("4. Go back to main menu");
     }
 
     public static void employeeMenu() {

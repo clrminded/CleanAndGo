@@ -32,7 +32,7 @@ public class Updates {
                     changeEmployees();
                     break;
                 case '5':
-                    CleanAndGo.quitMenu();
+                    CleanAndGo.connectToDB("student", "password");
                     done=true;
                     break;
                 default:
@@ -173,7 +173,6 @@ public static void changeEquipment() throws SQLException{
                     break;
                 case '4':
                     // exits menu
-                    CleanAndGo.quitMenu();
                     done=true;
                     break;
                 default:
@@ -251,7 +250,6 @@ public static void changeServices() throws SQLException{
                     break;
                 case '4':   
                     // exits menu
-                    CleanAndGo.quitMenu();
                     done=true;
                     break;
                 default:
@@ -312,7 +310,6 @@ public static void changeCustomers() throws SQLException{
                     break;
                 case '4':
                     // exits menu
-                    CleanAndGo.quitMenu();
                     done=true;
                     break;
                 default:
@@ -379,7 +376,6 @@ public static void changeEmployees() throws SQLException{
                     break;
                 case '4':
                     // exits menu
-                    CleanAndGo.quitMenu();
                     done=true;
                     break;
                 default:

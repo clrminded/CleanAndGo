@@ -19,7 +19,7 @@ public class Queries {
 
         ResultSet r = p.executeQuery();
 
-        System.out.println("Count New Customers");
+        System.out.println("    Count New Customers");
         System.out.println("--------------------------------------------------\n");
 
         while (r.next()) {
@@ -96,9 +96,9 @@ public class Queries {
         System.out.println("-----------------------------------------------------------------------------");
 
         while (r.next()) {
-            java.sql.Date dtm_date = r.getDate(2);
-            java.sql.Time dtm_start = r.getTime(2);
-            java.sql.Time dtm_end = r.getTime(3);
+            Date dtm_date = r.getDate(2);
+            Time dtm_start = r.getTime(2);
+            Time dtm_end = r.getTime(3);
 
             System.out.println("Date        Start Time                         End Time");
             System.out.println("-----------------------------------------------------------------------------");
@@ -109,4 +109,5 @@ public class Queries {
         // Close the statement
         stmt.close();
     }
+
 }

@@ -6,8 +6,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class Updates {
-
+public class DeleteInformation {
     public static void connectToDB(String username, String password) throws IOException {
         Connection conn = null;
         try {
@@ -20,24 +19,32 @@ public class Updates {
 
             boolean updatesDone = false;
             do {
-                UI.updatesMain();
+                UI.updates2Submenu();
                 System.out.print("Type in your option: ");
                 System.out.flush();
                 String updates_ch = Input.readLine();
                 System.out.println();
 
                 switch (updates_ch.charAt(0)) {
-                    case '1':
-                        InsertInformation.connectToDB(username, password);
+                    case 'A':
+                    case 'a':
+                        System.out.println("A. Delete specific eqipment");
                         break;
-                    case '2':
-                        DeleteInformation.connectToDB(username, password);
+                    case 'B':
+                    case 'b':
+                        System.out.println("B. Delete specific service");
                         break;
-                    case '3':
-                        UpdateInformation.connectToDB(username, password);
+                    case 'C':
+                    case 'c':
+                        System.out.println("C. Delete specific customer information");
                         break;
-                    case '4':
-                        System.out.println("4. Go back to main menu");
+                    case 'D':
+                    case 'd':
+                        System.out.println("D. Delete specific employee information");
+                        break;
+                    case 'E':
+                    case 'e':
+                        System.out.println("4. Go back to updates menu");
                         updatesDone = true;
                         break;
                     default:
@@ -62,22 +69,3 @@ public class Updates {
     }
 
 }
-
-/*
- * String query = "INSERT INTO Service(Name, Description, Rate, DurationHours) "
- * + "VALUES (" + sName + ", " + desc + ", "
- * + rate + ", " + duration + ");";
- * 
- * String query =
- * "INSERT INTO Equipment(Brand, PurchaseDate, PurchasePrice, Type, LifeSpanMonths, RetiredDate, SupplieCycleLengthMin) "
- * + "VALUES (" + brand + ", " + purchaseDate + ", " + purchasePrice + ", " +
- * equipmentType + ", " + LifeSpanMonths
- * + ", " + RetiredDate + ", " + SupplierID + ", " + CycleLengthMin + ");";
- * 
- * String query = "UPDATE Equipment " + "SET Brand="+brand+", "+
- * "PurchaseDate="+purchaseDate+", "+ "PurchasePrice="+purchasePrice+", "
- * +"Type="+equipmentType+"; "+ "LifeSpanMonths="+LifeSpanMonths+", "+
- * "RetiredDate="+RetiredDate+", "+ "SupplierID="+SupplierID+", "
- * +"CycleLengthMin="+CycleLengthMin+", " + "WHERE id=" + equipmentID+";";
- * 
- */

@@ -25,8 +25,10 @@ public class Employees {
 
                 switch (employee_ch.charAt(0)) {
                     case '1':
-                        UI.titlePadding(27);
-                        System.out.println("1. Get Working Schedule");
+                        System.out.println("Please enter your employeeID: ");
+                        System.out.flush();
+                        String employeeID_ch = Input.readLine();
+                        Queries.getEmployeeSchedule(conn, employeeID_ch);
                         break;
                     case '2':
                         UI.titlePadding(27);

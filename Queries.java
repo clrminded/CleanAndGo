@@ -1,6 +1,8 @@
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.Date;
+import java.sql.Time;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -17,7 +19,7 @@ public class Queries {
 
         ResultSet r = p.executeQuery();
 
-        System.out.println("    Count New Customers");
+        System.out.println("Count New Customers");
         System.out.println("--------------------------------------------------\n");
 
         while (r.next()) {
@@ -71,6 +73,37 @@ public class Queries {
             String name = r.getString(1);
 
             System.out.println(name);
+        }
+
+        // Close the statement
+        stmt.close();
+    }
+
+    // Scenerio 3 Query
+    public static void getEmployeeSchedule(Connection conn, String id) throws SQLException, IOException {
+
+        Statement stmt = conn.createStatement();
+
+        String query = "SELECT E.id, ES.StartTime, ES.EndTime FROM Employee AS E, EmployeeSchedule AS ES WHERE E.id = ES.Employee_id AND ES.Employee_id = "
+                + id;
+        PreparedStatement p = conn.prepareStatement(query);
+
+        p.clearParameters();
+
+        ResultSet r = p.executeQuery();
+
+        System.out.println("EmployeeID: " + id);
+        System.out.println("-----------------------------------------------------------------------------");
+
+        while (r.next()) {
+            java.sql.Date dtm_date = r.getDate(2);
+            java.sql.Time dtm_start = r.getTime(2);
+            java.sql.Time dtm_end = r.getTime(3);
+
+            System.out.println("Date        Start Time                         End Time");
+            System.out.println("-----------------------------------------------------------------------------");
+            System.out.println(dtm_date + "  " + dtm_start + "                           " + dtm_end);
+
         }
 
         // Close the statement

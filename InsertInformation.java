@@ -1,7 +1,7 @@
 
 //import java.io.BufferedReader;
 import java.io.IOException;
-import java.math.*;
+
 //import java.io.InputStreamReader;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -68,35 +68,6 @@ public class InsertInformation {
                 }
             }
         }
-    }
-
-    public static String selectServiceName() {
-        System.out.print("Type in the service name: ");
-        System.out.flush();
-        String updates_ch = Input.readLine();
-        return updates_ch;
-    };
-
-    public static String selectServiceDesc() {
-        System.out.print("Type in the service description: ");
-        System.out.flush();
-        String updates_ch = Input.readLine();
-        return updates_ch;
-    }
-
-    public static Float selectServiceRate() {
-        System.out.print("Type in the service rate: ");
-        System.out.flush();
-        Float updates_ch = Float.parseFloat(Input.readLine());
-        BigDecimal value = new BigDecimal(updates_ch).setScale(2, RoundingMode.HALF_UP);
-        return value.floatValue();
-    }
-
-    public static Double selectServiceDuration() {
-        System.out.print("Type in the service duration: ");
-        System.out.flush();
-        Double updates_ch = Double.parseDouble(Input.readLine());
-        return updates_ch;
     }
 
 }

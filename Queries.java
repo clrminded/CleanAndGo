@@ -112,14 +112,16 @@ public class Queries {
 
     public static void addNewService(Connection conn)
             throws SQLException, IOException {
-        String sName = InsertInformation.selectServiceName();
-        String desc = InsertInformation.selectServiceDesc();
-        Float rate = InsertInformation.selectServiceRate();
-        Double duration = InsertInformation.selectServiceDuration();
+
+        String sName = InsertService.selectServiceName();
+        String desc = InsertService.selectServiceDesc();
+        Float rate = InsertService.selectServiceRate();
+        Double duration = InsertService.selectServiceDuration();
 
         String sql = "INSERT INTO Service (Name, Description, Rate, DurationHours) VALUES (?, ?, ?, ?)";
 
-        try (PreparedStatement p = conn.prepareStatement(sql)) {
+        try (
+                PreparedStatement p = conn.prepareStatement(sql)) {
             p.setString(1, sName);
             p.setString(2, desc);
             p.setFloat(3, rate);

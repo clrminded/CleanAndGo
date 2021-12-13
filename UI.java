@@ -122,12 +122,12 @@ public class UI {
         topMenu();
         titlePadding(27);
         System.out.println("Customers & Services");
-        titlePadding(20);
+        titlePadding(32);
         System.out.println("3. Customers");
         bottomMenu();
         titlePadding(22);
         System.out.println("A. Customer list for a service.");
-        titlePadding(20);
+        titlePadding(32);
         System.out.println("B. Customer number.");
         titlePadding(21);
         System.out.println("C. Go back to customers & services menu");
@@ -154,7 +154,7 @@ public class UI {
         titlePadding(32);
         System.out.println("4. Updates");
         bottomMenu();
-        titlePadding(31);
+        titlePadding(28);
         System.out.println("1. Insert new information");
         titlePadding(28);
         System.out.println("2. Delete some information");
@@ -168,10 +168,10 @@ public class UI {
         topMenu();
         titlePadding(25);
         System.out.println("Updates");
-        titlePadding(32);
+        titlePadding(27);
         System.out.println("1. Insert New Information");
         bottomMenu();
-        titlePadding(31);
+        titlePadding(28);
         System.out.println("A. Add new equipment");
         titlePadding(28);
         System.out.println("B. Add new service");
@@ -190,7 +190,7 @@ public class UI {
         titlePadding(32);
         System.out.println("2. Delete some information");
         bottomMenu();
-        titlePadding(31);
+        titlePadding(28);
         System.out.println("A. Delete specific eqipment");
         titlePadding(28);
         System.out.println("B. Delete specific service");

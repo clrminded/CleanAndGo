@@ -40,7 +40,8 @@ class CleanAndGo {
                         Employees.connectToDB(username, password);
                         break;
                     case '4':
-                        Updates.connectToDB(username, password);
+                        String admin[] = validateAdmin();
+                        Updates.connectToDB(admin[0], admin[1]);
                         break;
                     case '5':
                         UI.exitMain();
@@ -66,6 +67,21 @@ class CleanAndGo {
                 }
             }
         }
+    }
+
+    public static String[] validateAdmin() {
+        String[] adminCreds = new String[] { "admin", "nimda" };
+        String[] creds = new String[2];
+        System.out.print("Enter admin username: ");
+        System.out.flush();
+        String adminUsername = Input.readLine();
+        System.out.print("Enter admin password: ");
+        System.out.flush();
+        String adminPass = Input.readLine();
+        if (adminUsername.equals("admin") && adminPass.equals("nimda")) {
+            return adminCreds;
+        }
+        return creds;
     }
 
 }

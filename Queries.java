@@ -134,26 +134,6 @@ public class Queries {
         stmt.close();
     }
 
-    public static void addNewService(Connection conn)
-            throws SQLException, IOException {
-
-        String sName = InsertService.selectServiceName();
-        String desc = InsertService.selectServiceDesc();
-        Float rate = InsertService.selectServiceRate();
-        Double duration = InsertService.selectServiceDuration();
-
-        String sql = "INSERT INTO Service (Name, Description, Rate, DurationHours) VALUES (?, ?, ?, ?)";
-
-        try (
-                PreparedStatement p = conn.prepareStatement(sql)) {
-            p.setString(1, sName);
-            p.setString(2, desc);
-            p.setFloat(3, rate);
-            p.setDouble(4, duration);
-            p.executeUpdate();
-        }
-    }
-
     /************************************************
      * -----------------DELETE ------------------------
      ***************************************/
@@ -170,6 +150,30 @@ public class Queries {
         System.out.println("Record is deleted from the Equipment table successfully....");
     }
 
+    public static void showEquipmentList(Connection conn) throws SQLException, IOException {
+        Statement stmt = conn.createStatement();
+
+        String query = "SELECT id, Brand FROM Equipment;";
+
+        PreparedStatement p = conn.prepareStatement(query);
+
+        p.clearParameters();
+
+        ResultSet r = p.executeQuery();
+
+        System.out.println("All Available Equipment");
+        System.out.println("-----------------------------------------------------------------------------");
+
+        while (r.next()) {
+            int id = r.getInt(1);
+            String brand = r.getString(2);
+
+            System.out.println(id + "    " + brand);
+        }
+
+        stmt.close();
+    }
+
     public static void deleteService(Connection conn, int id) throws SQLException, IOException {
 
         Statement stmt = conn.createStatement();
@@ -180,6 +184,30 @@ public class Queries {
         stmt.executeUpdate(query);
 
         System.out.println("Record is deleted from the Services table successfully....");
+    }
+
+    public static void showServiceList(Connection conn) throws SQLException, IOException {
+        Statement stmt = conn.createStatement();
+
+        String query = "SELECT id, Name FROM Service;";
+
+        PreparedStatement p = conn.prepareStatement(query);
+
+        p.clearParameters();
+
+        ResultSet r = p.executeQuery();
+
+        System.out.println("All Available Services");
+        System.out.println("-----------------------------------------------------------------------------");
+
+        while (r.next()) {
+            int id = r.getInt(1);
+            String name = r.getString(2);
+
+            System.out.println(id + "    " + name);
+        }
+
+        stmt.close();
     }
 
     public static void deleteCustomer(Connection conn, int id) throws SQLException, IOException {
@@ -206,56 +234,52 @@ public class Queries {
         System.out.println("Record is deleted from the Employee table successfully....");
     }
 
-    /***************************************************
-     * --------------UPDATE------------------------
-     ***************************************************/
-
-    public static void updateEquipment(Connection conn, String name, int id) throws SQLException, IOException {
-
+    public static void showCustomerList(Connection conn) throws SQLException, IOException {
         Statement stmt = conn.createStatement();
 
-        String query = "update from Equipment set Name= " + name +
-                "where id=" + id;
+        String query = "SELECT id, Name FROM Customer;";
 
-        stmt.executeUpdate(query);
+        PreparedStatement p = conn.prepareStatement(query);
 
-        System.out.println("Record is updated from the Equipment table successfully....");
+        p.clearParameters();
+
+        ResultSet r = p.executeQuery();
+
+        System.out.println("All Available Customers");
+        System.out.println("-----------------------------------------------------------------------------");
+
+        while (r.next()) {
+            int id = r.getInt(1);
+            String name = r.getString(2);
+
+            System.out.println(id + "    " + name);
+        }
+
+        stmt.close();
     }
 
-    public static void updateService(Connection conn, String name, int id) throws SQLException, IOException {
-
+    public static void showEmployeeList(Connection conn) throws SQLException, IOException {
         Statement stmt = conn.createStatement();
 
-        String query = "update from Service set Name= " + name +
-                "where id=" + id;
+        String query = "SELECT id, Name FROM Employee;";
 
-        stmt.executeUpdate(query);
+        PreparedStatement p = conn.prepareStatement(query);
 
-        System.out.println("Record is update from the table Service successfully....");
-    }
+        p.clearParameters();
 
-    public static void updateCustomer(Connection conn, String name, int id) throws SQLException, IOException {
+        ResultSet r = p.executeQuery();
 
-        Statement stmt = conn.createStatement();
+        System.out.println("All Available Employee");
+        System.out.println("-----------------------------------------------------------------------------");
 
-        String query = "update from Customer set Name= " + name +
-                "where id=" + id;
+        while (r.next()) {
+            int id = r.getInt(1);
+            String name = r.getString(2);
 
-        stmt.executeUpdate(query);
+            System.out.println(id + "    " + name);
+        }
 
-        System.out.println("Record is update from the Customer table successfully....");
-    }
-
-    public static void updateEmployee(Connection conn, String name, int id) throws SQLException, IOException {
-
-        Statement stmt = conn.createStatement();
-
-        String query = "update from Employee set Name= " + name +
-                "where id=" + id;
-
-        stmt.executeUpdate(query);
-
-        System.out.println("Record is update from the Employee table successfully....");
+        stmt.close();
     }
 
 }

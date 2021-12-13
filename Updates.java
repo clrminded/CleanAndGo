@@ -28,15 +28,20 @@ public class Updates {
 
                 switch (updates_ch.charAt(0)) {
                     case '1':
+                        // 1. Insert new information
+                        System.out.println("Not implemented at this time");
                         InsertInformation.connectToDB(username, password);
                         break;
                     case '2':
+                        // 2. Delete some information
                         DeleteInformation.connectToDB(username, password);
                         break;
                     case '3':
-                        UpdateInformation.connectToDB(username, password);
+                        // 3. Update current information
+                        System.out.println("Not implemented at this time");
                         break;
                     case '4':
+                        // 4. Go back to main menu
                         System.out.println("4. Go back to main menu");
                         updatesDone = true;
                         break;

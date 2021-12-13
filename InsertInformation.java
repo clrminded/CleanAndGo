@@ -34,7 +34,6 @@ public class InsertInformation {
                     case 'B':
                     case 'b':
                         System.out.println("B. Add new service");
-                        Queries.addNewService(conn);
                         break;
                     case 'C':
                     case 'c':

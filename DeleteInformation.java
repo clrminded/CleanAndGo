@@ -29,19 +29,30 @@ public class DeleteInformation {
                     case 'A':
                     case 'a':
                         System.out.println("A. Delete specific eqipment");
+                        Queries.showEquipmentList(conn);
+                        int equipmentIDtoDelete = promptForEquipment();
+                        Queries.deleteEquipment(conn, equipmentIDtoDelete);
                         break;
                     case 'B':
                     case 'b':
                         System.out.println("B. Delete specific service");
-                        Queries.deleteService(conn, 1);
+                        Queries.showServiceList(conn);
+                        int serviceToDelete = promptForEquipment();
+                        Queries.deleteService(conn, serviceToDelete);
                         break;
                     case 'C':
                     case 'c':
                         System.out.println("C. Delete specific customer information");
+                        Queries.showCustomerList(conn);
+                        int customerToDelete = promptForEquipment();
+                        Queries.deleteCustomer(conn, customerToDelete);
                         break;
                     case 'D':
                     case 'd':
                         System.out.println("D. Delete specific employee information");
+                        Queries.showEmployeeList(conn);
+                        int employeeToDelete = promptForEquipment();
+                        Queries.deleteEmployee(conn, employeeToDelete);
                         break;
                     case 'E':
                     case 'e':
@@ -69,4 +80,17 @@ public class DeleteInformation {
         }
     }
 
+    public static int promptForEquipment() {
+        System.out.println("What equipment ID would you like to delete? ");
+        System.out.flush();
+        int equipmentID = Integer.parseInt(Input.readLine());
+        return equipmentID;
+    }
+
+    public static int promptForService() {
+        System.out.println("What service ID would you like to delete? ");
+        System.out.flush();
+        int serviceID = Integer.parseInt(Input.readLine());
+        return serviceID;
+    }
 }

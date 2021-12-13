@@ -47,6 +47,7 @@ public class ServicesSection {
                                 "This should calculate the annual revenures from services");
                         System.out
                                 .println("provided to customers. AND grouped by service TYPE");
+                        Queries.annualRevenuesFromServices(conn);
                         break;
                     case 'D':
                     case 'd':

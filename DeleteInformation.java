@@ -33,6 +33,7 @@ public class DeleteInformation {
                     case 'B':
                     case 'b':
                         System.out.println("B. Delete specific service");
+                        Queries.deleteService(conn, 1);
                         break;
                     case 'C':
                     case 'c':

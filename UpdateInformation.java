@@ -29,18 +29,22 @@ public class UpdateInformation {
                     case 'A':
                     case 'a':
                         System.out.println("A. Update specific eqipment");
+                        System.out.println("Not implemented at this time");
                         break;
                     case 'B':
                     case 'b':
                         System.out.println("B. Update specific service");
+                        System.out.println("Not implemented at this time");
                         break;
                     case 'C':
                     case 'c':
                         System.out.println("C. Update specific customer information");
+                        System.out.println("Not implemented at this time");
                         break;
                     case 'D':
                     case 'd':
                         System.out.println("D. Update specific employee information");
+                        System.out.println("Not implemented at this time");
                         break;
                     case 'E':
                     case 'e':

@@ -30,17 +30,19 @@ public class CustomersSection {
                     case 'A':
                     case 'a':
                         System.out.println("Customer list for a service.");
-                        System.out.println(
-                                "Maybe provide a list of all available service available....?");
-                        System.out.println("Prompt for the name of a service");
-                        System.out.println("Return a list of customers that USED this service");
+                        System.out.println("Choose a Service:");
+                        Queries.showServiceList(conn);
+                        System.out.flush();
+                        int serviceName = Integer.parseInt(Input.readLine());
+                        Queries.servicesCustomerList(conn, serviceName);
                         break;
                     case 'B':
                     case 'b':
-                        System.out.println("Customer number.");
-                        System.out.println("prompt for a year");
-                        System.out.println(
-                                "Return the total number of customers per month during the year");
+                        System.out.println("Customer Number:");
+                        System.out.println("Enter in a year:");
+                        System.out.flush();
+                        int year = Integer.parseInt(Input.readLine());
+                        Queries.numberOfCustomerPerYear(conn, year);
                         break;
                     case 'C':
                     case 'c':

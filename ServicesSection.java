@@ -30,23 +30,16 @@ public class ServicesSection {
                     case 'A':
                     case 'a':
                         System.out.println("Requested Services");
-                        System.out.println(
-                                "This should report the most requested TYPE of service");
+                        Queries.mostRequestedServiceType(conn);
                         break;
                     case 'B':
                     case 'b':
                         System.out.println("Service transactions");
-                        System.out.println(
-                                "This should report the total number of service transactions");
-                        System.out.println("per month in the last 6 months.");
+                        Queries.perMonthServiceTransactions(conn);
                         break;
                     case 'C':
                     case 'c':
                         System.out.println("Annual revenues from services");
-                        System.out.println(
-                                "This should calculate the annual revenures from services");
-                        System.out
-                                .println("provided to customers. AND grouped by service TYPE");
                         Queries.annualRevenuesFromServices(conn);
                         break;
                     case 'D':

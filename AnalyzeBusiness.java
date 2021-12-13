@@ -30,12 +30,12 @@ public class AnalyzeBusiness {
                     case 'A':
                     case 'a':
                         System.out.println("Total number of new customers");
-                        Queries.selectAllCustomerNames(conn);
+                        Queries.getCurrentYearNewCustomerCount(conn);
                         break;
                     case 'B':
                     case 'b':
                         System.out.println("Total number of service transactions");
-                        Queries.selectAllSupplierNames(conn);
+                        Queries.getCurrentMonthServiceTransactions(conn);
                         break;
                     case 'C':
                     case 'c':
